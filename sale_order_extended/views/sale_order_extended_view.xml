@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="sale_order_extended_view" model="ir.ui.view">
+			<field name="name">sale.order_extended_details.inherited</field>
+			<field name="model">sale.order</field>
+			<field name="inherit_id" ref="sale.view_order_form"></field>
+			<field name="arch" type="xml">
+				<xpath expr="//notebook" position="inside">
+					<page string="Detalles del pedido">
+						<group string="Detalles">
+							<group>
+								<field name="x_beton_folio_venta"></field>
+								<field name="x_beton_pedido_cliente"></field>
+								<field name="x_beton_niveles" widget="many2many_tags"></field>
+								<field name="x_beton_elementos" widget="many2many_tags"></field>
+								<field name="x_beton_premezclador" />
+							</group>
+							<group>
+								<field name="x_beton_tuberia_vertical"></field>
+								<field name="x_beton_tuberia_horizontal"></field>
+								<field name="x_beton_tuberia_total"></field>
+								<field name="x_beton_tipo_equipo_solicitado"></field>
+								<field name="x_beton_equipo_solicitado"></field>
+								<field name="x_beton_fecha_hora_pedido"></field>
+							</group>
+						</group>
+						<group string="Tiempos">
+							<field name="x_beton_hora_llegada" widget="float_time"/>
+							<field name="x_beton_hora_listos" widget="float_time"/>
+							<field name="x_beton_hora_inicio" widget="float_time"/>
+							<field name="x_beton_hora_termino" widget="float_time"/>
+						</group>
+					</page>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

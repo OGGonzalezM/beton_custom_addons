@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model='ir.ui.view' id='acc_number_bank_tree'>
+			<field name='name'>acc.number.bank.tree</field>
+			<field name='model'>res.partner.bank</field>
+			<field name="inherit_id" ref="base.view_partner_bank_tree"/>
+			<field name='arch' type='xml'>
+				<xpath expr="//tree" position="replace">
+					<tree string='Cuentas Empleados'>
+						<field name='partner_id'/>
+						<field name="bank_name"/>
+						<field name="bank_bic"/>
+						<field name="acc_number"/>
+						<field name="acc_type"/>
+					</tree>
+				</xpath>
+			</field>
+		</record>
+		<record id="acc_number_bank_action" model="ir.actions.act_window">
+			<field name="name">Cuentas Bancarias</field>
+			<field name="res_model">res.partner.bank</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem id="menu_acc_number_bank_action" name="Cuentas Empleados" parent="account.menu_finance_entries" action="acc_number_bank_action"/>
+	</data>
+</odoo>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="seguimiento_proyectos_view" model="ir.ui.view">
+			<field name="name">seguimiento_proyectos_view.inherited</field>
+			<field name="model">account.analytic.line</field>
+			<field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"></field>
+			<field name="arch" type="xml">
+				<xpath expr="//field/tree/field[@name='name']">
+					<field name="x_beton_folioentrega"></field>
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<report 
+			id="sale_order_extend_report"
+			model="sale.order"
+			string="Reporte de pedidos"
+			name="sale_order_extended.report_extender_sale_order"
+			file="sale_order_extended.sale_order_extend_report"
+			report_type="qweb-pdf"
+			/>
+
+		<template id="report_extender_sale_order">
+			<t t-call="report.html_container">
+				<t t-foreach="docs" t-as="pedido">
+					<div class="page" style="font-size:12px; font-family:Arial; padding-top:10px;">
+						<br/>
+						<div class="row">
+							<div class="col-xs-2 col-xs-offset-9" style="font-size:14px; font-family:Arial; padding-left: 10px;">
+								<span t-field="pedido.x_beton_folio_venta"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-1 col-xs-offset-10" style="padding-left: 20px; padding-top:15px;">
+								<span t-field="pedido.x_beton_pedido_cliente"/>
+							</div>
+						</div>
+						<br/>
+
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-8 text-left" style="padding-left:30px; padding-top:5px;">
+								<span t-field="pedido.x_beton_fecha_hora_pedido" t-options="{&quot;format&quot;: &quot;MM/dd/YY&quot;}"/>
+
+								<span t-field="pedido.x_beton_fecha_hora_pedido" t-options="{&quot;format&quot;: &quot;hh:mm:ss a&quot;}" style="padding-left:70px;"/>
+							</div>
+						</div>
+						<br/>
+						<br/>
+						<!-- Volumen del pedido -->
+						<div class="row">
+							<div class="col-xs-1 col-xs-offset-11" style="padding-left:15px;">
+								<t t-set="total_pedido" t-value="0"/>
+								<t t-foreach="pedido.order_line" t-as="lineas_pedido">
+									<t t-set="total_pedido" t-value="total_pedido + lineas_pedido.product_uom_qty"/>
+								</t>
+								<t t-esc="total_pedido"/>
+							</div>
+						</div>
+
+						<div class="row" style="padding-top:5px; border-style: solid;">
+							<div class="col-xs-5">
+								<span t-field="pedido.partner_id.display_name"/>
+							</div>
+							<div class="col-xs-5">
+								<t t-if="pedido.partner_shipping_id.parent_id.name">
+									<span t-field="pedido.partner_shipping_id.parent_id.name"/>
+								</t>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-5">
+								Número de Obra: 
+								<span style="color:white;">.....</span>
+								<span t-field="pedido.partner_shipping_id.comment"/>
+							</div>
+							<div class="col-xs-2 col-xs-offset-1 text-center">
+								<t t-foreach="pedido.x_beton_niveles" t-as="nivel">
+									<span t-field="nivel.name"/>
+								</t>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-4 col-xs-offset-5">
+								<span t-field="pedido.partner_shipping_id.street"/>
+								COL. 
+								<span t-field="pedido.partner_shipping_id.parent_id.street2"/>
+								DEL. 
+								<span t-field="pedido.partner_shipping_id.city"/>
+								EDO.
+								<span t-field="pedido.partner_shipping_id.state_id.name"/>
+								CP. 
+								<span t-field="pedido.partner_shipping_id.zip"/>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-xs-1 col-xs-offset-10 text-right">
+								<t t-foreach="pedido.x_beton_elementos" t-as="elemento">
+									<span t-field="elemento.name"/>
+								</t>
+							</div>
+						</div>
+						<br/>
+
+						<div class="row">
+							<div class="col-xs-3 col-xs-offset-3">
+								<span t-field="pedido.x_beton_premezclador"/>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-2 col-xs-offset-6" style="padding-left:30px;">
+								<span t-field="pedido.x_beton_tuberia_vertical"/>
+							</div>
+							<div class="col-xs-2 col-xs-offset-2 text-right" style="padding-right:20px;">
+								<t t-if="u'pluma' in pedido.x_beton_tipo_equipo_solicitado ">
+									<strong>X</strong>
+								</t>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-3 col-xs-offset-2" style="padding-left: 55px;">
+								<span t-field="pedido.partner_shipping_id.name"/>
+							</div>
+							<div class="col-xs-2 col-xs-offset-1" style="padding-left:30px;">
+								<span t-field="pedido.x_beton_tuberia_horizontal"/>
+							</div>
+							<div class="col-xs-2">
+								<span t-field="pedido.x_beton_tuberia_total" style="border-style: none;"/>
+							</div>
+							<div class="col-xs-2 text-right" style="padding-right:20px;">
+								<t t-if="u'estacionario' in pedido.x_beton_tipo_equipo_solicitado ">
+									<strong>X</strong>
+								</t>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-3 col-xs-offset-9" style="font-size:9px; font-family:Arial; padding-left:20px;">
+								<san t-field="pedido.x_beton_equipo_solicitado.name"/>
+							</div>
+						</div>
+					</div>
+				</t>
+			</t>
+		</template>
+	</data>
+</odoo>

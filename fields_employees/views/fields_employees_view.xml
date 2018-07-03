@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record model="ir.ui.view" id="fecha_alta_imss_field_view">
+			<field name="name">hr.employee_field_alta_imss.inherited</field>
+			<field name="model">hr.employee</field>
+			<field name="inherit_id" ref="hr_mx_ext.hr_employee_mx_view_form" />
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='imss']" position="after">
+					<field name="x_beton_fechaaltaimss" />
+				</xpath>
+			</field>
+		</record>
+	</data>
+</odoo>

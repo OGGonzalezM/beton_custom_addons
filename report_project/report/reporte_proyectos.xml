@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<report
+			id="reporte_proyectos"
+			model="project.project"
+			string="Reporte de proyectos"
+			name="report_project.reporte_proyectos_beton_view"
+			file="report_project.reporte_proyectos"
+			report_type="qweb-pdf" />
+			
+		<template id="reporte_proyectos_beton_view">
+			<t t-call="report.html_container">
+            	<t t-foreach="docs" t-as="project">
+            		<t t-call="report.external_layout">
+            			<div class="page">
+            				<div class="row">
+        						<t t-foreach="project.task_ids" t-as="tareas">
+			        				<div class="row">
+			        					<div class="col-md-12">
+			        						<h2>Proyecto:</h2>
+			        						<h1>
+			        							<span t-field="project.name" />
+			        						</h1>
+			        					</div>
+			        				</div>
+			        				<div class="row">
+			        					<div class="col-md-6 col-sm-6 col-xs-6">
+			        						<p>
+			        							<b>
+			        								<span>Responsable: </span>
+			        								<h4 t-field="project.user_id"/>
+			        							</b>
+			        						</p>
+			        						<p>
+			        							<b>
+			        								<span>Cuenta analitica: </span>
+			        								<h4 t-field="project.analytic_account_id"/>
+			        							</b>
+			        						</p>
+			        						<p>
+			        							<b>
+			        								<span>Cliente: </span>
+			        								<h4 t-field="project.partner_id"/>
+			        							</b>
+			        						</p>
+			        					</div>
+			        				</div>
+            						<h3 class="text-center">Seguimiento del proyecto</h3>
+        							<div class="row">
+        								<div class="col-xs-8">
+	        								<div class="col-md-3 col-sm-3 col-xs-3">
+	    										<b>
+	    											<span>Orden de venta : </span>
+	    											<h4 t-field="tareas.name"/>
+	    										</b>
+	        								</div>
+	        								<div class="col-md-3 col-sm-3 col-xs-3">
+	    										<b>
+	    											<span>Fecha limite: </span>
+	    											<h4 t-field="tareas.date_deadline"/>
+	    										</b>
+	        								</div>
+	        								<div class="col-md-3 col-sm-3 col-xs-3">
+	    										<b>
+	    											<span>Metros inciales planeados</span>
+	    											<h4 t-field="tareas.planned_hours" />
+	    										</b>
+	        								</div>
+	        								<div class="col-md-3 col-sm-3 col-xs-3">
+	    										<b>
+	    											<span>Metros entregados</span>
+	    											<h4 t-field="tareas.total_hours_spent" />
+	    										</b>
+	        								</div>
+        								</div>
+        								<div class="col-xs-4">
+        									<b>
+        										<span>Descripción: </span>
+        									</b>
+        									<p t-field="tareas.description"></p>
+        								</div>
+        							</div>
+    								<h3>Entregas</h3>
+									<table class="table">
+										<thead>
+											<th>Fecha</th>
+											<th>Folio</th>
+											<th>Metros Cúbicos</th>
+											<th>Equipo</th>
+										</thead>
+										<tbody>
+											<t t-foreach="tareas.timesheet_ids" t-as="entregas">	
+												<tr>
+													<td>
+														<span t-field="entregas.date"></span>
+													</td>
+													<td>
+														<span t-field="entregas.x_beton_folioentrega"></span>
+													</td>
+													<td>
+														<span t-field="entregas.unit_amount"></span>
+													</td>
+													<td>
+														<span t-field="entregas.x_beton_equipoentrega"></span>
+													</td>
+												</tr>
+											</t>
+										</tbody>
+									</table>
+									<p style="page-break-before:always;"> </p>
+        						</t>
+            				</div>
+            			</div>
+            		</t>
+            	</t>
+            </t>
+		</template>
+	</data>
+</odoo>
