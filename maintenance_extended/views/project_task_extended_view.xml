@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="project_task_form_view_inherited" model="ir.ui.view">
+			<field name="name">project_task_form.view.inherited</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="project.view_task_form2"></field>
+			<field name="arch" type="xml">
+
+				<xpath expr="//field[@name='user_id']" position="after">
+					<field name="costo_recursos" />
+					<field name="finalizada" />
+				</xpath>
+
+				<notebook position="inside">
+					<page name="lista_materiales_page" string="Lista de materiales">
+						<field name="listado_materiales_ids" nolabel="true">
+							<tree editable="bottom">
+								<field name="product_id" />
+								<field name="cantidad" />
+								<field name="uom_id" />
+								<field name="costo" />
+								<field name="importe" />
+							</tree>
+						</field>
+					</page>
+				</notebook>
+
+			</field>
+		</record>
+		
+	</data>
+</odoo>

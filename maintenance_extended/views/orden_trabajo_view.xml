@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="orden_trabajo_form_view" model="ir.ui.view">
+			<field name="name">orden_trabajo.form.view</field>
+			<field name="model">ops4g.orden_trabajo</field>
+			<field name="arch" type="xml">
+				<form string="Orden de trabajo">
+					<sheet>
+						<div class="oe_title">
+							<h1>
+								<field name="name" readonly="True"/>
+							</h1>
+						</div>
+						<group>
+							<group>
+								<field name="descripcion" />
+								<field name="responsable" />
+								<field name="responsable_supervision" />
+							</group>
+							<group>
+								<field name="costo_horas_hombre" />
+								<field name="costo_recursos" />
+								<field name="costo_total" />
+							</group>
+						</group>
+						<notebook name="orden_trabajo_notebook">
+							<page name="tareas" string="Listado de tareas">
+								<field name="tareas_ids" nolabel="1">
+									<tree editable="bottom">
+										<field name="tarea_id" />
+										<field name="ejecuta_employee_id" />
+										<field name="fecha_hora" />
+										<field name="horas" />
+										<field name="costo_hora" />
+										<field name="importe" />
+									</tree>
+								</field>
+							</page>
+						</notebook>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="orden_trabajo_tree_view" model="ir.ui.view">
+			<field name="name">orden_trabajo.tree.view</field>
+			<field name="model">ops4g.orden_trabajo</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="name" />
+					<field name="descripcion" />
+					<field name="responsable" />
+					<field name="responsable_supervision" />
+					<field name="costo_horas_hombre" />
+					<field name="costo_recursos" />
+					<field name="costo_total" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="orden_trabajo_search_view" model="ir.ui.view">
+			<field name="name">orden_trabajo.search.view</field>
+			<field name="model">ops4g.orden_trabajo</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="name" />
+					<field name="descripcion" />
+					<field name="responsable" />
+					<field name="responsable_supervision" />
+				</search>
+			</field>
+		</record>
+
+		<record id="orden_trabajo_action" model="ir.actions.act_window">
+			<field name="name">Ordenes de trabajo</field>
+			<field name="res_model">ops4g.orden_trabajo</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem 
+			id="orden_trabajo_menuitem"
+			name="Ordenes de trabajo"
+			parent="maintenance.menu_maintenance_title"
+			action="orden_trabajo_action"
+			sequence="2"
+			/>
+
+	</data>
+</odoo>

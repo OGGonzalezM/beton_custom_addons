@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="seq_consecutivo_orden_trabajo" model="ir.sequence">
+			<field name="name">consecutivo_orden_trabajo</field>
+			<field name="code">ops4g_orden_trabajo</field>
+			<field name="padding">4</field>
+			<field name="prefix">OT</field>
+			<field eval="1" name="number_increment"/>
+		</record>
+	</data>
+</odoo>
