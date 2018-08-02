@@ -35,6 +35,7 @@
         'views/project_task_extended_view.xml',
         'data/orden_trabajo_consecutivo.xml',
         'views/orden_trabajo_view.xml',
+        'views/maintenance_request_extended_view.xml',
     ],
 
     'installable': True,
