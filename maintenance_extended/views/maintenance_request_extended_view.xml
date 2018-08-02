@@ -6,8 +6,26 @@
 			<field name="model">maintenance.request</field>
 			<field name="inherit_id" ref="maintenance.hr_equipment_request_view_form"></field>
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='priority']" position="after">
-					<field name="x_orden_trabajo" required="True"/>
+
+				<xpath expr="//header" position="inside">
+					<button
+						name="crear_orden_compra"
+						type="object"
+						string="Crear orden de compra, DEMO"
+						class="oe_highlight"
+						attrs="{
+							'invisible': [('orden_compra_creada', '=', True)]
+						}"
+						>						
+					</button>
+				</xpath>
+
+				<xpath expr="//field[@name='description']" position="before">
+					<group>
+						<field name="x_orden_trabajo" required="True"/>
+						<field name="x_proveedor_materiales_id" />
+						<field name="orden_compra_creada"/>
+					</group>
 				</xpath>
 			</field>
 		</record>

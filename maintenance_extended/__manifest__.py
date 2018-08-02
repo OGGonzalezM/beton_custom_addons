@@ -31,6 +31,7 @@
     'demo': [],
 
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_employee_extended_view.xml',
         'views/project_task_extended_view.xml',
         'data/orden_trabajo_consecutivo.xml',

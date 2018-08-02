@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_ops4g_tareas,access_ops4g_tareas,model_ops4g_tareas,,1,1,1,1
+access_ops4g_materiales,access_ops4g_materiales,model_ops4g_materiales,,1,1,1,1
+access_ops4g_orden_trabajo,access_ops4g_orden_trabajo,model_ops4g_orden_trabajo,,1,1,1,1
