@@ -32,6 +32,7 @@
 
     'data': [
         'security/ir.model.access.csv',
+        'data/maintenance_project.xml',
         'views/hr_employee_extended_view.xml',
         'views/project_task_extended_view.xml',
         'data/orden_trabajo_consecutivo.xml',

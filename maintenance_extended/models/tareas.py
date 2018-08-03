@@ -20,7 +20,6 @@ class Tareas(models.Model):
     ejecuta_employee_id = fields.Many2one(
         'hr.employee',
         string="Ejecuta",
-        required=True,
     )
 
     fecha_hora = fields.Datetime(
@@ -30,7 +29,6 @@ class Tareas(models.Model):
 
     horas = fields.Float(
         string="Horas",
-        required=True,
     )
 
     costo_hora = fields.Float(

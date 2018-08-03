@@ -16,7 +16,7 @@
 					<div class="page" style="font-size:12px; font-family:Arial; padding-top:10px;">
 						<br/>
 						<div class="row">
-							<div class="col-xs-2 col-xs-offset-9" style="font-size:14px; font-family:Arial; padding-left: 10px;">
+							<div class="col-xs-2 col-xs-offset-9" style="font-size:14px; font-family:Arial; padding-left: 66px;">
 								<span t-field="pedido.x_beton_folio_venta"/>
 							</div>
 						</div>

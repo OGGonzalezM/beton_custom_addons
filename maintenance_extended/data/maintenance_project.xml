@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="
+			maintenance_project" model="project.project">
+			<field name="name">Mantenimiento</field>
+			<field name="use_tasks">True</field>
+			<field name="allow_timesheets">True</field>
+			<field name="use_issues">True</field>
+		</record>
+	</data>
+</odoo>
