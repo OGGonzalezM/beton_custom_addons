@@ -31,6 +31,22 @@ class MaintenanceRequestExtended(models.Model):
         track_visibility='onchange',
     )
 
+    # Recibe un objeto
+    @api.multi
+    def actualizar_stock_producto(self, product_id, stock_usado):
+        if product_id.type == "product":
+            stock_producto_obj = self.env['stock.quant'].sudo().search(
+                [
+                    ('product_id.id', '=', product_id.id)
+                ]
+            )
+            stock_actual = stock_producto_obj.qty
+            nuevo_stock = stock_actual - stock_usado
+            stock_producto_obj.qty = nuevo_stock
+        else:
+            print ("\n ********************Este producto no es almacenable")
+            print (product_id)
+
     @api.multi
     def crear_orden_compra(self):
         if self.x_orden_trabajo:
@@ -52,6 +68,7 @@ class MaintenanceRequestExtended(models.Model):
             orden_trabajo = self.x_orden_trabajo
             for tarea in orden_trabajo.tareas_ids:
                 tarea_odoo = tarea.tarea_id
+                # Ciclo para obtener los materiales y crear una linea de orden de compra
                 for material in tarea_odoo.listado_materiales_ids:
                     unidad_medida = material.product_id.uom_id
                     precio_unitario = material.product_id.standard_price
@@ -61,6 +78,10 @@ class MaintenanceRequestExtended(models.Model):
                                       orden_trabajo.name + \
                                       " de " + self.name
 
+                    # Actualizar primero el stock del producto usado
+                    self.actualizar_stock_producto(material.product_id, material.cantidad)
+
+                    # Crear linea de la orden de compra por cada producto
                     self.env['purchase.order.line'].sudo().create(
                         {
                             'name': nombre_producto ,

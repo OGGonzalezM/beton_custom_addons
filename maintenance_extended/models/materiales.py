@@ -13,7 +13,8 @@ class Materiales(models.Model):
     product_id = fields.Many2one(
         'product.product',
         string="Material",
-        domain="[('purchase_ok', '=', True)]",
+        domain="[('purchase_ok', '=', True),"
+               "('type', '!=', 'consu')]",
         required=True,
     )
 
