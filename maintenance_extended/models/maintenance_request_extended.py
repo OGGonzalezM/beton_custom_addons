@@ -72,5 +72,6 @@ class MaintenanceRequestExtended(models.Model):
                             'product_qty': material.cantidad,
                         }
                     )
-
             self.orden_compra_creada = True
+        else:
+            raise ValidationError("Por favor asigne una orden de trabajo")
