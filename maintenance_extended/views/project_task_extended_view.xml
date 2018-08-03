@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
 	<data>
-		<record id="project_task_form_view_inherited" model="ir.ui.view">
+		<record id="maintenance_ops4g_project_task_form_view_inherited" model="ir.ui.view">
 			<field name="name">project_task_form.view.inherited</field>
 			<field name="model">project.task</field>
 			<field name="inherit_id" ref="project.view_task_form2"></field>

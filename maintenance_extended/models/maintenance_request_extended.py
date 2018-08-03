@@ -28,7 +28,7 @@ class MaintenanceRequestExtended(models.Model):
              "creada una orden de compra para esta petición de mantenimiento.\n"
              "Si desea volver a crear la orden de compra desmarque esta opción",
         default=False,
-
+        track_visibility='onchange',
     )
 
     @api.multi
@@ -50,21 +50,20 @@ class MaintenanceRequestExtended(models.Model):
             )
 
             orden_trabajo = self.x_orden_trabajo
-            print ("\n ********************************* Tareas O2m ******************************")
-            print (orden_trabajo.tareas_ids)
             for tarea in orden_trabajo.tareas_ids:
                 tarea_odoo = tarea.tarea_id
-                print ("Materiales de Odoo")
                 for material in tarea_odoo.listado_materiales_ids:
-                    print (material.product_id)
-                    print (material.cantidad)
                     unidad_medida = material.product_id.uom_id
                     precio_unitario = material.product_id.standard_price
                     fecha_planeada = datetime.now()
-                    nombre_producto = material.product_id.name
+                    nombre_producto = material.product_id.name + \
+                                      " del mantenimiento " + \
+                                      orden_trabajo.name + \
+                                      " de " + self.name
+
                     self.env['purchase.order.line'].sudo().create(
                         {
-                            'name': nombre_producto,
+                            'name': nombre_producto ,
                             'order_id': orden_compra.id,
                             'product_id': material.product_id.id,
                             'product_uom': unidad_medida.id,
@@ -73,5 +72,5 @@ class MaintenanceRequestExtended(models.Model):
                             'product_qty': material.cantidad,
                         }
                     )
+
             self.orden_compra_creada = True
-            print ("Todo finalizado**************")

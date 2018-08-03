@@ -4,6 +4,7 @@
 		<record model="ir.ui.view" id="vehiculos_en_cuentasa">
 			<field name="name">account.analytic_campo_vehiculos</field>
 			<field name="model">account.analytic.line</field>
+			<field name="model">account.analytic.line</field>
 			<field name="inherit_id" ref="analytic.view_account_analytic_line_form"></field>
 			<field name="arch" type="xml">
 				<xpath expr="//field[@name='currency_id']" position="after">

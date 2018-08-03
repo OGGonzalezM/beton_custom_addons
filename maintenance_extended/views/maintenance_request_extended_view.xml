@@ -11,7 +11,7 @@
 					<button
 						name="crear_orden_compra"
 						type="object"
-						string="Crear orden de compra, DEMO"
+						string="Crear orden de compra, DEV"
 						class="oe_highlight"
 						attrs="{
 							'invisible': [('orden_compra_creada', '=', True)]
@@ -21,7 +21,7 @@
 				</xpath>
 
 				<xpath expr="//field[@name='description']" position="before">
-					<group>
+					<group string="Datos orden de trabajo">
 						<field name="x_orden_trabajo" required="True"/>
 						<field name="x_proveedor_materiales_id" />
 						<field name="orden_compra_creada"/>

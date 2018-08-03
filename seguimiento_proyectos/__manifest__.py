@@ -18,12 +18,21 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','account','fleet','project','hr_timesheet','mail'],
+    'depends': [
+        'base',
+        'account',
+        'analytic',
+        'account_accountant',
+        'fleet',
+        'project',
+        'hr_timesheet',
+        'mail'
+    ],
 
     # always loaded
     'data': [
-        #'views/seguimiento_proyectos_fields_view.xml',
         'views/campo_vehiculos_cuentasa.xml',
+        #'views/seguimiento_proyectos_fields_view.xml',
     ],
     'installable':True,
     'auto_install':False,

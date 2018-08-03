@@ -53,6 +53,5 @@ class Tareas(models.Model):
     @api.depends('horas', 'costo_hora')
     def getimporte(self):
         for record in self:
-            importe_total = 0
             importe_total = record.horas * record.costo_hora
             record.importe = importe_total
