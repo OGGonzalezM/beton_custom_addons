@@ -9,6 +9,11 @@ class ProjectTaskExtended(models.Model):
         string="Finalizada"
     )
 
+    project_id = fields.Many2one(
+        'project.project',
+        default=lambda self: self.env.ref('maintenance_extended.maintenance_project'),
+    )
+
     costo_recursos = fields.Float(
         string="Costo de Recursos",
         compute='getcostorecursos',
