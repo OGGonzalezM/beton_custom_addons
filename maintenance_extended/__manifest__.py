@@ -22,8 +22,9 @@
 
     'depends': [
         'base',
-        'maintenance',
+        'purchase',
         'project',
+        'maintenance',
         'hr',
         'stock'
     ],
@@ -38,6 +39,7 @@
         'data/orden_trabajo_consecutivo.xml',
         'views/orden_trabajo_view.xml',
         'views/maintenance_request_extended_view.xml',
+        'views/purchase_order_extended_view.xml',
     ],
 
     'installable': True,

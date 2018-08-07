@@ -63,10 +63,17 @@ class MaintenanceRequestExtended(models.Model):
                         ('supplier', '=', True)
                     ]
                 )
-                proveedor = proveedor[0]
+                proveedor = proveedor[0].id
+
             orden_compra = self.env['purchase.order'].sudo().create(
                 {
-                    'partner_id': proveedor.id,
+                    'partner_id': proveedor,
+                }
+            )
+
+            orden_compra.sudo().write(
+                {
+                    'x_s4g_orden_trabajo': self.x_orden_trabajo.id,
                 }
             )
 
