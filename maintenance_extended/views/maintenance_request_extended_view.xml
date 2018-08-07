@@ -25,6 +25,7 @@
 						<field name="x_orden_trabajo" required="True"/>
 						<field name="x_proveedor_materiales_id" />
 						<field name="orden_compra_creada"/>
+						<field name="x_costo_ot" />
 					</group>
 				</xpath>
 			</field>
@@ -35,13 +36,6 @@
 			<field name="model">maintenance.request</field>
 			<field name="inherit_id" ref="mrp_maintenance.maintenance_request_view_form_inherit_mrp" />
 			<field name="arch" type="xml">
-				<xpath expr="//field[@name='equipment_id']" position="replace">
-					
-				</xpath>
-
-				<!-- <xpath expr="//field[@name='repair_id']" position="replace">
-					
-				</xpath> -->
 
 				<xpath expr="//field[@name='workorder_id']" position="replace">
 					

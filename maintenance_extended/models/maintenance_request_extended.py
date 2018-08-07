@@ -31,6 +31,11 @@ class MaintenanceRequestExtended(models.Model):
         track_visibility='onchange',
     )
 
+    x_costo_ot = fields.Float(
+        string="Costo de la orden de trabajo",
+        related='x_orden_trabajo.costo_total',
+    )
+
     # Recibe un objeto
     @api.multi
     def actualizar_stock_producto(self, product_id, stock_usado):

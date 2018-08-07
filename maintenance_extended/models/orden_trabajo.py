@@ -52,6 +52,11 @@ class OrdenTrabajo(models.Model):
         string="Tareas",
     )
 
+    equipamiento = fields.Many2one(
+        'maintenance.equipment',
+        string="Equipamiento",
+    )
+
     @api.model
     def create(self, vals):
         if vals.get('name', 'OT000X') == 'OT000X':

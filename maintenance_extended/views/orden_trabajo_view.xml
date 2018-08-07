@@ -17,6 +17,7 @@
 								<field name="descripcion" />
 								<field name="responsable" />
 								<field name="responsable_supervision" />
+								<field name="equipamiento" />
 							</group>
 							<group>
 								<field name="costo_horas_hombre" />
@@ -28,6 +29,7 @@
 							<page name="tareas" string="Listado de tareas">
 								<field name="tareas_ids" nolabel="1">
 									<tree editable="bottom">
+										<field name="orden_trabajo_id" readonly="True"/>
 										<field name="tarea_id" />
 										<field name="ejecuta_employee_id" />
 										<field name="fecha_hora" />

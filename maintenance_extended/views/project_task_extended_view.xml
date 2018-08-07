@@ -7,22 +7,24 @@
 			<field name="inherit_id" ref="project.view_task_form2"></field>
 			<field name="arch" type="xml">
 
-				<xpath expr="//field[@name='user_id']" position="after">
-					<field name="costo_recursos" />
-					<field name="finalizada" />
-				</xpath>
-
 				<notebook position="inside">
-					<page name="lista_materiales_page" string="Lista de materiales">
-						<field name="listado_materiales_ids" nolabel="true">
-							<tree editable="bottom">
-								<field name="product_id" />
-								<field name="cantidad" />
-								<field name="uom_id" />
-								<field name="costo" />
-								<field name="importe" />
-							</tree>
-						</field>
+					<page name="lista_materiales_page" string="Detalles para mantenimiento">
+						<group>
+							<field name="costo_recursos" />
+							<field name="finalizada" />
+							<field name="x_ot_relacionada" />
+						</group>
+						<group string="Lista de materiales">
+							<field name="listado_materiales_ids" nolabel="1">
+								<tree editable="bottom">
+									<field name="product_id" />
+									<field name="cantidad" />
+									<field name="uom_id" />
+									<field name="costo" />
+									<field name="importe" />
+								</tree>
+							</field>
+						</group>
 					</page>
 				</notebook>
 

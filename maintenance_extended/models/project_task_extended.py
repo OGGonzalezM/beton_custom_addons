@@ -25,6 +25,13 @@ class ProjectTaskExtended(models.Model):
         string="Listado de materiales"
     )
 
+    x_ot_relacionada = fields.Many2one(
+        'ops4g.orden_trabajo',
+        string="Última orden de trabajo relacionada",
+        compute='getotrelacionada',
+        help="Aquí se muestra de ultima orden de trabajo que se ha relacionado a esta tarea"
+    )
+
     @api.multi
     @api.depends('listado_materiales_ids')
     def getcostorecursos(self):
@@ -33,3 +40,15 @@ class ProjectTaskExtended(models.Model):
             for material in record.listado_materiales_ids:
                 total_recursos += material.importe
             record.costo_recursos = total_recursos
+
+    @api.multi
+    def getotrelacionada(self):
+        for record in self:
+            if record.listado_materiales_ids:
+                s4g_tareas = record.env['ops4g.tareas'].sudo().search(
+                    [
+                        ('tarea_id.id', '=', record.id),
+                    ]
+                )
+
+                record.x_ot_relacionada = s4g_tareas[-1].orden_trabajo_id
