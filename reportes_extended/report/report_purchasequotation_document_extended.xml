@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<template id="report_purchasequotation_document_extended" inherit_id="purchase.report_purchasequotation_document">
+			<xpath expr="//table/thead/tr/th[1]" position="after">
+				<th>Cuenta analítica</th>
+			</xpath>
+
+			<xpath expr="//table/tbody" position="replace">
+				<tbody>
+                    <tr t-foreach="o.order_line" t-as="order_line">
+                        <td>
+                            <span t-field="order_line.name"/>
+                        </td>
+
+                        <!-- Linea agregada para la cuenta analítica -->
+                        <td class="text-center">
+                            <span t-field="order_line.account_analytic_id"/>
+                        </td>
+
+                        <!-- Fin -->
+                        <td class="text-center">
+                            <span t-field="order_line.date_planned"/>
+                        </td>
+                        <td class="text-right">
+                            <span t-field="order_line.product_qty"/>
+                            <span t-field="order_line.product_uom" groups="product.group_uom"/>
+                        </td>
+                    </tr>
+                </tbody>
+			</xpath>
+
+			<xpath expr="//p[@t-field='o.notes']" position="before">
+				<t t-if="o.partner_id.bank_ids">
+					<strong>Cuenta bancaria del proveedor: </strong> <span t-field="o.partner_id.bank_ids[0].acc_number"/>
+					<br/>
+				</t>
+				<t t-else="">
+					<span>
+						No hay cuenta de proveedor
+					</span>
+					<br/>
+				</t>
+
+				<strong>Orden de trabajo:</strong>	<span t-field="o.x_s4g_orden_trabajo"/>
+				<br/>
+			</xpath>
+
+		</template>
+	</data>
+</odoo>
