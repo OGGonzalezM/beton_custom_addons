@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<report
+		id="repote_orden_trabajo"
+		model="ops4g.orden_trabajo"
+		string="Orden de trabajo"
+		name="maintenance_extended.reporte_beton_orden_trabajo"
+		file="maintenance_extended.repote_orden_trabajo"
+		report_type="qweb-pdf"
+		/>
+
+	<template id="reporte_beton_orden_trabajo">
+		<t t-call="report.html_container">
+			<t t-foreach="docs" t-as="doc">
+				<t t-call="report.external_layout">
+					<div class="page">
+						
+						<div class="row">
+							<div class="col-xs-12">
+								<h1>
+									<strong>
+										Orden de trabajo:
+										<span t-field="doc.name" />
+									</strong>
+								</h1>
+							</div>
+						</div>
+
+						<t t-if="doc.descripcion">
+							<div class="row">
+								<div class="col-xs-12">
+									<h4>
+										<span t-field="doc.descripcion"/>
+									</h4>
+								</div>
+							</div>
+						</t>
+
+						<div class="row">
+							<div class="col-xs-7">
+								<h5 class="">
+									<strong>Responsable ejecución:</strong> <br/>
+									<span t-field="doc.responsable"/> <br/><br/>
+
+									<t t-if="doc.responsable_supervision">
+										<strong>Responsable supervisión:</strong> <br/>
+										<span t-field="doc.responsable_supervision" />
+									</t>
+									<br/><br/>
+
+									<strong>Equipo:</strong> <br/>
+									<span t-field="doc.equipamiento" />
+									<br/><br/>
+								</h5>
+							</div>
+							<div class="col-xs-5">
+								<h5 class="">
+									<strong>Costo por horas:</strong> <br/>
+									<span t-field="doc.costo_horas_hombre" /> <br/><br/>
+
+									<strong>Costo de los materiales: </strong><br/>
+									<span t-field="doc.costo_recursos" /> <br/><br/>
+
+									<strong>Costo total:</strong><br/>
+									<span t-field="doc.costo_total" /> <br/><br/>
+								</h5>
+							</div>	
+						</div>
+
+						<div class="row">
+							<h3>
+								Tareas
+							</h3>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Tarea</th>
+										<th>Ejecuta</th>
+										<th>Fecha y hora</th>
+										<th>Horas</th>
+										<th>$ / Hora</th>
+										<th>Importe</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="doc.tareas_ids" t-as="tarea">
+										<tr>
+											<td>
+												<span t-field="tarea.tarea_id.name"></span>
+											</td>
+											<td>
+												<span t-field="tarea.ejecuta_employee_id"></span>
+											</td>
+											<td>
+												<span t-field="tarea.fecha_hora"></span>
+											</td>
+											<td>
+												<span t-field="tarea.horas"></span>
+											</td>
+											<td>
+												<span t-field="tarea.costo_hora"></span>
+											</td>
+											<td>
+												<span t-field="tarea.importe"></span>
+											</td>
+										</tr>
+									</t>
+								</tbody>
+							</table>
+							<br/>
+
+							<h3>Materiales</h3>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>Material</th>
+										<th>Cantidad</th>
+										<th>U.M</th>
+										<th>Costo</th>
+										<th>Importe</th>
+									</tr>
+								</thead>
+								<tbody>
+									<t t-foreach="doc.tareas_ids" t-as="tarea">
+										<t t-foreach="tarea.tarea_id.listado_materiales_ids" t-as="material">
+											<tr>
+												<td>
+													<span t-field="material.product_id.display_name"></span>
+												</td>
+												<td>
+													<span t-field="material.cantidad"></span>
+												</td>
+												<td>
+													<span t-field="material.uom_id.name"></span>
+												</td>
+												<td>
+													<span t-field="material.costo"></span>
+												</td>
+												<td>
+													<span t-field="material.importe"></span>
+												</td>
+											</tr>											
+										</t>
+									</t>	
+								</tbody>	
+							</table>
+
+						</div>
+
+					</div>
+				</t>
+			</t>
+		</t>
+	</template>
+</odoo>

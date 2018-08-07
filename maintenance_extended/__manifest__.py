@@ -40,6 +40,7 @@
         'views/orden_trabajo_view.xml',
         'views/maintenance_request_extended_view.xml',
         'views/purchase_order_extended_view.xml',
+        'report/orden_trabajo_report.xml',
     ],
 
     'installable': True,
