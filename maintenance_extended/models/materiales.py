@@ -10,11 +10,18 @@ class Materiales(models.Model):
         string="Tarea"
     )
 
+    
+
     product_id = fields.Many2one(
         'product.product',
         string="Material",
-        domain="[('purchase_ok', '=', True)",
+        domain="[('purchase_ok', '=', True)]",
         required=True,
+    )
+
+    display_name = fields.Char(
+        string="Nombre a mostrar",
+        related='product_id.display_name'
     )
 
     cantidad = fields.Float(

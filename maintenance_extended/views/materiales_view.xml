@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="s4g_materiales_form_view" model="ir.ui.view">
+			<field name="name">s4g_materiales.form.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="arch" type="xml">
+				<form string="Materiales">
+					<sheet>
+						<div class="oe_title">
+							<h1>
+								<field name="product_id"/>
+							</h1>
+						</div>
+						<group>
+							<field name="task_id" />
+							<field name="cantidad" />
+							<field name="uom_id" />
+							<field name="costo" />
+							<field name="importe" />
+						</group>
+					</sheet>
+				</form>
+			</field>
+		</record>
+
+		<record id="s4g_materiales_tree_view" model="ir.ui.view">
+			<field name="name">s4g_materiales.tree.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="arch" type="xml">
+				<tree>
+					<field name="product_id" />
+					<field name="task_id" />
+					<field name="cantidad" />
+					<field name="uom_id" />
+					<field name="costo" />
+					<field name="importe" />
+				</tree>
+			</field>
+		</record>
+
+		<record id="s4g_materiales_search_view" model="ir.ui.view">
+			<field name="name">s4g_materiales.search.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="arch" type="xml">
+				<search>
+					<field name="product_id" />
+					<field name="task_id" />
+					<field name="cantidad" />
+				</search>
+			</field>
+		</record>
+
+		<record id="s4g_materiales_action" model="ir.actions.act_window">
+			<field name="name">Materiales</field>
+			<field name="res_model">ops4g.materiales</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">tree,form</field>
+		</record>
+
+		<menuitem
+			id="s4g_materiales_menuitem"
+			name="Materiales"
+			parent="maintenance.menu_maintenance_title"
+			action="s4g_materiales_action"
+			sequence="3"
+			/>
+
+	</data>
+</odoo>

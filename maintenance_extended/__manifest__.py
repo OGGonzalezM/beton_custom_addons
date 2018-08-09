@@ -41,6 +41,7 @@
         'views/maintenance_request_extended_view.xml',
         'views/purchase_order_extended_view.xml',
         'report/orden_trabajo_report.xml',
+        'views/materiales_view.xml',
     ],
 
     'installable': True,

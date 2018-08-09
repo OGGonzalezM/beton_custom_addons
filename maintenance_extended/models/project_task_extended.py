@@ -51,4 +51,15 @@ class ProjectTaskExtended(models.Model):
                     ]
                 )
 
-                record.x_ot_relacionada = s4g_tareas[-1].orden_trabajo_id
+                if s4g_tareas:
+                    print("Tareas relacionadas")
+                    print(s4g_tareas)
+
+                    if s4g_tareas[-1]:
+                        record.x_ot_relacionada = s4g_tareas[-1].orden_trabajo_id
+                    else:
+                        record.x_ot_relacionada = s4g_tareas[0].orden_trabajo_id
+                else:
+                    print("\n *****No hay tareas relacionadas")
+
+
