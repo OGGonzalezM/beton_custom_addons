@@ -10,8 +10,6 @@ class Materiales(models.Model):
         string="Tarea"
     )
 
-    
-
     product_id = fields.Many2one(
         'product.product',
         string="Material",

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="update_materiales_form_view" model="ir.ui.view">
+			<field name="name">update_materiales.form.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="inherit_id" ref="maintenance_extended.s4g_materiales_form_view" />
+			<field name="arch" type="xml">
+				<field name="task_id" position="after">
+					<field name="ot_relacionada_tarea_id" />
+				</field>
+			</field>
+		</record> 
+
+		<record id="update_materiales_tree_view" model="ir.ui.view">
+			<field name="name">update_materiales.tree.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="inherit_id" ref="maintenance_extended.s4g_materiales_tree_view" />
+			<field name="arch" type="xml">
+				<field name="product_id" position="before">
+					<field name="ot_relacionada_tarea_id" />
+				</field>
+			</field>
+		</record>
+
+		<record id="update_materiales_search_view" model="ir.ui.view">
+			<field name="name">update_materiales.search.view</field>
+			<field name="model">ops4g.materiales</field>
+			<field name="inherit_id" ref="maintenance_extended.s4g_materiales_search_view" />
+			<field name="arch" type="xml">
+				<field name="product_id" position="before">
+					<field name="ot_relacionada_tarea_id" />
+				</field>
+			</field>
+		</record>
+
+	</data>
+</odoo>

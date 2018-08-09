@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+		<record id="update_maintenance_extended_form_view" model="ir.ui.view">
+			<field name="name">update_maintenance_extended.form.view.inherited</field>
+			<field name="model">project.task</field>
+			<field name="inherit_id" ref="maintenance_extended.maintenance_ops4g_project_task_form_view_inherited" />
+			<field name="arch" type="xml">
+				<field name="finalizada" position="after">
+					<field name="x_ot_relacionada" />
+				</field>
+			</field>
+		</record>
+	</data>
+</odoo>

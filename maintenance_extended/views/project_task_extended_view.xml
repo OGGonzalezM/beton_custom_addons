@@ -12,7 +12,7 @@
 						<group>
 							<field name="costo_recursos" />
 							<field name="finalizada" />
-							<field name="x_ot_relacionada" />
+							<!-- Poner despues de este campo poner el campo de ot relacionada -->
 						</group>
 						<group string="Lista de materiales">
 							<field name="listado_materiales_ids" nolabel="1">
