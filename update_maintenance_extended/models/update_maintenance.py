@@ -18,7 +18,6 @@ class UpdateMaintenance(models.Model):
     @api.multi
     def getotrelacionada(self):
         for record in self:
-            print("\n ****************************** Se ha asignado una OT 111")
             s4g_tareas = record.env['ops4g.tareas'].sudo().search(
                 [
                     ('tarea_id.id', '=', record.id),

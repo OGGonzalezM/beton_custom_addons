@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+s4g_access_manager_analityc_account_manager,s4g_analityc_account_manager_can_create,analytic.model_account_analytic_account,access_manager.analityc_account_manager,1,1,1,1
+s4g_access_manager_project_project,s4g_project_project_manager_can_create,project.model_project_project,access_manager.project_project_create_manager,1,1,1,1

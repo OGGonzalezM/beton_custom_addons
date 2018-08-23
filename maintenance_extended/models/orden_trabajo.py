@@ -84,7 +84,7 @@ class OrdenTrabajo(models.Model):
     @api.depends('costo_horas_hombre', 'costo_recursos')
     def get_costototal(self):
         for record in self:
-            if record.costo_recursos > 0 and record.costo_horas_hombre > 0:
+            if record.costo_recursos >= 0 and record.costo_horas_hombre >= 0:
                 costo_total = record.costo_recursos + record.costo_horas_hombre
                 record.costo_total = costo_total
             else:

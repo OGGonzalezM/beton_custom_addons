@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data>
+
+		<record id="analityc_account_manager" model="res.groups">
+			<field name="name">Creador de cuentas contables</field>
+			<field name="comment">Solo este usuario puede crear cuentas contables.</field>
+		</record>
+
+		<record id="project_project_create_manager" model="res.groups">
+			<field name="name">Creador de proyectos</field>
+			<field name="comment">Solo este usuario puede crear proyectos</field>
+		</record>
+
+	</data>
+</odoo>
